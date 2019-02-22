@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="form__footer">
-                                <button :disabled="disabled" class="btn btn--primary btn--md btn--block" type="submit">Update</button>
+                                <button class="btn btn--primary btn--md btn--block" type="submit">Update</button>
                             </div>
                         </form>
                     </div>
@@ -360,5 +360,143 @@ export default {
 .close:focus {
     outline: none;
     box-shadow: none;
+}
+
+.btn {
+    color: #2b3a49;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    outline: none;
+}
+@media screen and (min-width: 768px) {
+    .btn {
+        padding: 12px 20px;
+    }
+}
+.btn:focus {
+    outline: none;
+}
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.btn--primary {
+    color: #fff;
+    background-color: #f5a623;
+    box-shadow: 0 1px 2px 0 rgba(213, 213, 213, 0.22);
+}
+.btn--primary:hover {
+    background-color: #c88009;
+    color: #fff;
+}
+.btn--block {
+    width: 100%;
+}
+.form__label {
+    display: block;
+    font-size: 14px;
+    line-height: 1.14;
+    color: #546278;
+    margin-bottom: 12px;
+    font-family: inherit;
+    text-align: left;
+}
+.form__label--2 {
+    font-size: 11px;
+    color: rgba(84, 98, 120, 0.7);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1b1d1c;
+    letter-spacing: 0.2px;
+    font-family: inherit;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border-width: 0 0 1.6px 0;
+    border-style: solid;
+    border-color: #afafaf;
+    border-radius: 0px;
+    outline: none;
+    box-shadow: none;
+    transition: all 0.3s ease-in-out;
+}
+.form__input:focus {
+    border-color: #f5a623;
+}
+.form__input::-webkit-input-placeholder {
+    color: rgba(27, 29, 28, 0.66);
+}
+.form__input::-moz-placeholder {
+    color: rgba(27, 29, 28, 0.66);
+}
+.form__input:-ms-input-placeholder {
+    color: rgba(27, 29, 28, 0.66);
+}
+.form__input:-moz-placeholder {
+    color: rgba(27, 29, 28, 0.66);
+}
+.form__input--inline {
+    display: inline-block;
+    max-width: 334px;
+}
+.form__input--noBorders {
+    font-weight: 700;
+    color: #1b1d1c;
+    border: none;
+    padding: 6px 0px;
+}
+.form__input--2 {
+    border-color: rgba(124, 136, 157, 0.15);
+}
+
+.form__item {
+    margin-bottom: 20px;
+}
+.form__item--more {
+    margin-bottom: 40px;
+}
+.form__item--noMargin {
+    margin-bottom: 0px;
+}
+.form__item--2 {
+    margin-bottom: 40px;
+}
+.form__footer {
+    margin-top: 30px;
+}
+.form__pad--info {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    color: #1d222c;
 }
 </style>
