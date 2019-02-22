@@ -31,35 +31,33 @@
             </div>
         </div>
 
-        <div aria-labelledby="editModal" class="modal fade" id="editModal" role="dialog" tabindex="-1">
+        <!-- Edit -->
+        <div aria-labelledby="editModalLabel" class="modal fade" id="editModal" role="dialog" tabindex="-1">
             <!-- Modal Dialog -->
             <div class="modal__dialog modal__dialog--sm" role="document">
                 <!-- Modal content -->
                 <div class="modal__content">
+                    <div class="modal__header">
+                        <div class="modal__title text-center">Modify Fields</div>
+                        <!-- Modal close button -->
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <svg height="13" viewBox="0 0 13 13" width="13" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.254 6.5l4.383-4.382A1.24 1.24 0 0 0 10.882.363L6.5 4.746 2.118.363A1.24 1.24 0 1 0 .363 2.118L4.746 6.5.363 10.882a1.24 1.24 0 0 0 1.755 1.755L6.5 8.254l4.382 4.383a1.24 1.24 0 1 0 1.755-1.755L8.254 6.5z" fill="#C0C6D8" fill-rule="nonzero"></path>
+                            </svg>
+                        </button>
+                    </div>
                     <!-- Modal Body -->
                     <div class="modal__body modal__body--pad">
                         <form @submit.prevent="modifyField" class="form">
-                            <div class="modal__body__top">
-                                <svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                    <defs>
-                                        <path d="M10 0C4.486 0 0 4.486 0 10s4.486 10 10 10 10-4.486 10-10S15.514 0 10 0m0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8m0-13a1 1 0 0 0-1 1v4a1 1 0 1 0 2 0V6a1 1 0 0 0-1-1m0 8a1 1 0 1 0 0 2 1 1 0 0 0 0-2" id="a"></path>
-                                    </defs>
-                                    <g fill="none" fill-rule="evenodd">
-                                        <circle cx="16" cy="16" fill="#BF0711" opacity=".409" r="16"></circle>
-                                        <g transform="translate(6 6)">
-                                            <circle cx="10" cy="10" fill="#FFF" r="9"></circle>
-                                            <use fill="#BF0711" xlink:href="#a"></use>
-                                        </g>
-                                    </g>
-                                </svg>
-                                
-                                <input type="text" v-model="des">
-                            </div>
-                            <div class="modal__body__bottom">
-                                <div class="form__footer form__footer--flex">
-                                    <button aria-label="Close" class="btn btn--flex btn--sm btn--primary" data-dismiss="modal" type="button">No</button>
-                                    <button class="btn btn--flex btn--sm btn--danger" type="submit">Yes</button>
+                            <div class="form__pad">
+                                <div :key="key" class="form__item" v-for="(input, key) in selectedFields">
+                                    <label class="form__label form__label--2" for>How much do you want to fund?</label>
+                                    <input class="form__input form__input--2" type="text">
                                 </div>
+                            </div>
+
+                            <div class="form__footer">
+                                <button :disabled="disabled" class="btn btn--primary btn--md btn--block" type="submit">Update</button>
                             </div>
                         </form>
                     </div>
@@ -78,9 +76,7 @@ export default {
     data() {
         return {
             selectedRow: "",
-            selectedFields: {
-                
-            }
+            selectedFields: []
         };
     },
 
@@ -101,6 +97,10 @@ export default {
                 sameElse: "Do MMM YYYY"
             });
         }
+    },
+
+    created() {
+        this.parseActionFields();
     },
 
     computed: {
@@ -130,6 +130,20 @@ export default {
         // perform modify action on row
         modifyField() {
             // Set item to store
+        },
+
+        // Parse action fields
+        parseActionFields() {
+            // Loop through action fields
+            this.actionFields.forEach(element => {
+                // Set the fields and add an value and empty state variable
+                this.selectedFields.push({
+                    [element]: {
+                        value: "",
+                        empty: false
+                    }
+                });
+            });
         },
 
         editdescription() {
@@ -185,6 +199,7 @@ export default {
 .table__data.table__checkbox {
     width: 30px;
 }
+
 .modal {
     position: fixed;
     top: 0;
@@ -203,29 +218,40 @@ export default {
 .modal-open .modal.in {
     overflow-x: hidden;
     overflow-y: auto;
-    display: flex !important;
     height: 100%;
     align-items: center;
 }
 .modal__dialog {
     position: relative;
-    width: 100%;
+    width: auto;
     margin: 10px;
 }
 @media screen and (min-width: 768px) {
     .modal__dialog {
         width: 600px;
-        margin: 30px auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 100px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .modal__dialog--xs {
+        width: 320px;
     }
 }
 @media screen and (min-width: 768px) {
     .modal__dialog--sm {
-        width: 360px;
+        width: 430px;
+    }
+}
+@media screen and (min-width: 768px) {
+    .modal__dialog--md {
+        width: 500px;
     }
 }
 @media screen and (min-width: 992px) {
     .modal__dialog--lg {
-        width: 620px;
+        width: 630px;
     }
 }
 .modal.fade .modal__dialog {
@@ -277,19 +303,24 @@ export default {
 }
 .modal__header {
     padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid transparent;
+    background-color: #ffffff;
 }
 .modal__header .close {
-    margin-top: -2px;
+    margin-top: 6px;
 }
 .modal__title {
     margin: 0;
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 18px;
+    margin-top: 10px;
+    font-family: inherit;
     font-weight: 600;
+    text-transform: uppercase;
 }
 .modal__body {
     position: relative;
+    padding: 24px;
 }
 .modal__footer {
     padding: 15px;
@@ -303,8 +334,11 @@ export default {
 .modal__footer .btn-group .btn + .btn {
     margin-left: -1px;
 }
-.modal__footer .btn-block + .btn-block {
+.modal__footer .btn--block + .btn--block {
     margin-left: 0;
+}
+.modal__footer .btn--block {
+    padding-bottom: 10px;
 }
 .modal-scrollbar-measure {
     position: absolute;
@@ -313,7 +347,6 @@ export default {
     height: 50px;
     overflow: scroll;
 }
-
 .close {
     border: none;
     background-color: transparent;
