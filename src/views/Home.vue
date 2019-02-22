@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <DataTable :tabledata="payments"/>
+        <DataTable :tableData="payments" :tableHeader="['name', 'amount', 'description', 'date']" sortBy="date" :tableFields="['name', 'amount', 'description', 'date']" :action="true" :actionFields="['description']" />
     </div>
 </template>
 
