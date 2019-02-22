@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <DataTable/>
+        <DataTable :tabledata="payments"/>
     </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
     },
     data() {
         return {
-            payments: "",
+            payments: [],
             value: ""
         };
     },
@@ -39,47 +39,44 @@ export default {
     },
 
     created() {
-        // this.fetchData();
+        this.fetchPayments();
         // this.setData();
-        this.parseDocument();
+        // this.parseDocument();
     },
 
     methods: {
-        fetchData() {
+        // Fetch list of payments
+        fetchPayments() {
             this.dataBase.get().then(response => {
-                this.payments = response.data();
-            });
-        },
-
-        setData() {
-            this.dataBase.set({
-                id: "adhahda",
-                descriptioin: "ahahdhahdha",
-                amount: "1234",
-                date: "ahdh23234"
-            });
-        },
-
-        parseDocument() {
-            Papa.parse('https://docs.google.com/spreadsheets/d/1eBsATYdeISUGjdBr0SzNhY5Ur9mkl0u11tfhxn2Y1WE/export?format=csv&id=1eBsATYdeISUGjdBr0SzNhY5Ur9mkl0u11tfhxn2Y1WE&gid=1376887707', {
-                download: true,
-                complete: result => {
-                    let tableHeaders = [result.data[0][0].toLowerCase(), result.data[0][1].toLowerCase(), result.data[0][2].toLowerCase(), result.data[0][3].toLowerCase(), result.data[0][4].toLowerCase()]
-                    console.log(tableHeaders);
-
-                    result.data.forEach(element => {
-                        // console.log(element[0]);
-                        this.dataBase.doc(element[0]).set({
-                            [tableHeaders[0]] : element[0],
-                            [tableHeaders[1]] : element[1],
-                            [tableHeaders[2]] : element[2],
-                            [tableHeaders[3]] : element[3],
-                            [tableHeaders[4]] : element[4],
-                        });
-                    });
-                }
+                console.log(response.docs);
+                response.docs.forEach(item => {
+                    console.log(item.data());
+                    this.payments.push(item.data());
+                })
             });
         }
+
+        // Parse CSV and upload to Firebase
+        // parseDocument() {
+        //     Papa.parse('https://docs.google.com/spreadsheets/d/1eBsATYdeISUGjdBr0SzNhY5Ur9mkl0u11tfhxn2Y1WE/export?format=csv&id=1eBsATYdeISUGjdBr0SzNhY5Ur9mkl0u11tfhxn2Y1WE&gid=1376887707', {
+        //         download: true,
+        //         complete: result => {
+        //             let tableHeaders = [result.data[0][0].toLowerCase(), result.data[0][1].toLowerCase(), result.data[0][2].toLowerCase(), result.data[0][3].toLowerCase(), result.data[0][4].toLowerCase()]
+        //             console.log(tableHeaders);
+
+        //             result.data.forEach(element => {
+        //                 // console.log(element[0]);
+        //                 this.dataBase.doc(element[0]).set({
+        //                     [tableHeaders[0]] : element[0],
+        //                     [tableHeaders[1]] : element[1],
+        //                     [tableHeaders[2]] : element[2],
+        //                     [tableHeaders[3]] : element[3],
+        //                     [tableHeaders[4]] : element[4],
+        //                 });
+        //             });
+        //         }
+        //     });
+        // }
     }
 };
 </script>
