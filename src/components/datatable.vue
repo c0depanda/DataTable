@@ -51,8 +51,9 @@
                         <form @submit.prevent="modifyField" class="form">
                             <div class="form__pad">
                                 <div :key="key" class="form__item" v-for="(input, key) in selectedFields">
-                                    <label class="form__label form__label--2" for>How much do you want to fund?</label>
-                                    <input class="form__input form__input--2" type="text">
+                                    <label class="form__label form__label--2">{{Object.keys(input)[0]}}</label>
+                                    <input class="form__input form__input--2" type="text" v-model="input[Object.keys(input)[0]].value">
+                                    <span class="error" v-if="input[Object.keys(input)[0]].empty">Field cannot be empty</span>
                                 </div>
                             </div>
 
@@ -421,10 +422,10 @@ export default {
     text-align: left;
 }
 .form__label--2 {
-    font-size: 11px;
+    font-size: 14px;
     color: rgba(84, 98, 120, 0.7);
     font-weight: 700;
-    text-transform: uppercase;
+    text-transform: capitalize;
     margin-bottom: 6px;
 }
 .form__input {
@@ -498,5 +499,12 @@ export default {
     line-height: 1.5;
     text-align: center;
     color: #1d222c;
+}
+.error {
+    display:block;
+    color: red;
+    font-size: 12px;
+    padding-top: 10px;
+    text-align: left;
 }
 </style>
