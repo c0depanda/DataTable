@@ -68,7 +68,4 @@ This accepts the name of the column as a string
 
 `sortDirection`
 Allows to specify the direction in which to sort the specified `sortBy` variable by.
-By default it sorts in the descending order if you want to sort in the ascending order just pass 
-```
-sortBy="asc"
-```
+By default it sorts in the descending order if you want to sort in the ascending order just pass  `sortDirection="asc"`
