@@ -13,13 +13,13 @@ firebase.initializeApp({
     projectId: "britecode-b1fdf"
 });
 
-const db = firebase.firestore();
+window.db = firebase.firestore();
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        storeItems: []
+        storeItems: [],
     },
     mutations: {
         setStoreItems(state, value) {
