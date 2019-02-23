@@ -83,10 +83,10 @@ Heroku now runs the `npm run build` by default so we had to remove the `postinst
 Lastly, we had to move the build for production to heroku mainly to allow us move our firebase configuration keys to envirnoment variables. 
 
 ## Extras
-*Q:* How long did you spend on the test? Would you do anything differently if you had more time?
+**Q:** How long did you spend on the test? Would you do anything differently if you had more time?
 
-*A:* About 10 hours in total spread over 2 days. There are couple more features that could be added such as a search feature, paginations etc but that would have just prolonged it. Could probably add the search feature later tonight. 
+**A:** About 10 hours in total spread over 2 days. There are couple more features that could be added such as a search feature, paginations etc but that would have just prolonged it. Could probably add the search feature later tonight. 
 
-*Q:* In what ways would you adapt your component so that it could be used in many different scenarios where a data table is required?
+**Q:** In what ways would you adapt your component so that it could be used in many different scenarios where a data table is required?
 
-A: 
+**A:**
