@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <DataTable :action="true" :actionFields="['description']" :tableData="payments" :tableFields="['name', 'amount', 'description', 'date']" :tableHeader="['name', 'amount', 'description', 'date']" sortBy="date"/>
+        <DataTable :action="true" :actionFields="['description']" :tableData="payments" :tableFields="['name', 'amount', 'description', 'date']" :tableHeader="['name', 'amount', 'description', 'date']" sortBy="date" />
     </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
                                     [tableHeaders[1]]: element[1],
                                     [tableHeaders[2]]: element[2],
                                     [tableHeaders[3]]: element[3],
-                                    [tableHeaders[4]]: element[4]
+                                    [tableHeaders[4]]: parseFloat(element[4])
                                 });
                         }
                     });

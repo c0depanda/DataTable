@@ -73,7 +73,7 @@ const moment = require("moment");
 
 export default {
     name: "datatable",
-    props: ["tableData", "tableHeader", "sortBy", "tableFields", "action", "actionFields"],
+    props: ["tableData", "tableHeader", "sortBy", "sortDirection", "tableFields", "action", "actionFields"],
     data() {
         return {
             selectedRow: "",
@@ -108,15 +108,27 @@ export default {
     computed: {
         // Return data by value
         sortDataByValue() {
-            return this.tableData.sort((a, b) => {
-                if (a[this.sortBy] < b[this.sortBy]) {
-                    return 1;
-                }
-                if (a[this.sortBy] > b[this.sortBy]) {
-                    return -1;
-                }
-                return 0;
-            });
+            if (this.sortDirection == "asc") {
+                return this.tableData.sort((a, b) => {
+                    if (a[this.sortBy] > b[this.sortBy]) {
+                        return 1;
+                    }
+                    if (a[this.sortBy] < b[this.sortBy]) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            } else {
+                return this.tableData.sort((a, b) => {
+                    if (a[this.sortBy] < b[this.sortBy]) {
+                        return 1;
+                    }
+                    if (a[this.sortBy] > b[this.sortBy]) {
+                        return -1;
+                    }
+                    return 0;
+                });
+            }
         }
     },
 
