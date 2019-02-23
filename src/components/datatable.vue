@@ -10,7 +10,7 @@
                     <div :key="key" class="table__header" v-for="(title, key) in tableHeader">{{title | capitalize}}</div>
                     <!-- table header -->
                     <div class="table__header textRight" v-if="action">
-                        <span class="visibilityNone">Action</span>
+                        <span>Action</span>
                     </div>
                 </div>
             </div>
@@ -83,12 +83,13 @@ export default {
     },
 
     filters: {
+        // capitalize text
         capitalize: function(value) {
             if (!value) return "";
             value = value.toString();
             return value.charAt(0).toUpperCase() + value.slice(1);
         },
-
+        // Date format
         date: function(item) {
             return moment(item).calendar(null, {
                 sameDay: "[Today]",
@@ -197,16 +198,17 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .table {
-    display: table;
+    /* display: table; */
     width: 100%;
 }
 .table--padded {
     padding: 20px 20px 20px 20px;
 }
 .table__row {
-    display: table-row;
+    /* display: table-row; */
+    display: flex;
     color: inherit;
     text-decoration: none;
 }
@@ -215,15 +217,15 @@ export default {
     box-shadow: inset 0 -1px 0 0 #e1e4fa;
 }
 .table__section--head {
-    display: table-header-group;
+    /* display: table-header-group; */
     font-weight: 600;
 }
 .table__section--body {
-    display: table-row-group;
+    /* display: table-row-group; */
 }
 .table__header,
 .table__data {
-    display: table-cell;
+    flex-basis: 100%;
     vertical-align: middle;
     border-width: 0 0 1px 0;
     border-style: solid;
@@ -231,10 +233,6 @@ export default {
     padding: 20px 16px;
     cursor: pointer;
     text-align: left;
-}
-.table__header.table__checkbox,
-.table__data.table__checkbox {
-    width: 30px;
 }
 
 .modal {
