@@ -63,6 +63,8 @@ export default {
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 50px;
+    padding-bottom: 100px;
 }
 </style>
 
