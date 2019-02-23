@@ -156,6 +156,8 @@ export default {
                         selectedFields: currentFieldData
                     })
                     .then(response => {
+                        // close Modal
+                        $("#editModal").modal("hide");
                         this.disabled = false;
                     })
                     .catch(error => {
