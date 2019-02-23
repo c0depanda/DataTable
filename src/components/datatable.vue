@@ -25,7 +25,7 @@
                     </div>
                     <!-- table data -->
                     <div class="table__data textRight" v-if="action">
-                        <a @click.prevent="loadEditModal(item)" class="link link--blue">Edit</a>
+                        <a @click.prevent="loadEditModal(item)" class="link link--yellow">Edit</a>
                     </div>
                 </div>
             </div>
@@ -540,5 +540,13 @@ export default {
     font-size: 12px;
     padding-top: 10px;
     text-align: left;
+}
+.link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link--yellow {
+    color: yellow;
 }
 </style>
