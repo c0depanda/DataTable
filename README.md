@@ -42,13 +42,13 @@ The DataTable allows you to pass data using props, specify the header names, sel
 
 ### List of props supported
 
-1. tableData
+1. `tableData`
 
-This accepts an array of objects
+    This accepts an array of objects
 
-2. tableHeader
+2. `tableHeader`
 
-This accepts an array of titles. This is what gets populated in the header of the table
+    This accepts an array of titles. This is what gets populated in the header of the table
 
 3. tableFields
 
