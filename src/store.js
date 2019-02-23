@@ -13,7 +13,7 @@ firebase.initializeApp({
     projectId: "britecode-b1fdf"
 });
 
-window.db = firebase.firestore();
+const db = firebase.firestore();
 
 Vue.use(Vuex)
 
