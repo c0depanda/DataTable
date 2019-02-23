@@ -1,0 +1,10 @@
+{
+    "user": {
+        "name": "Nosa Obaseki",
+        "title": "Front-end Developer",
+        "bio": "I am vastly experienced in implementing pixel perfect UI designs from PSD or Sketch files to HTML5 design Prototypes (HTML5, CSS, JAVASCRIPT) coupled with using Vue.js to build Single Page Applications. I have great experience working with Vue.js as I have built a couple of Large scale applications with it. I also works with source control tools such as GIT to collaborate with other developers and I use BEM Methodology to create reusable front end code. I also write technical articles teaching concepts / technologies I know on Medium",
+        "skills": ["HTML5", "CSS3", "SCSS", "JAVASCRIPT", "VUE.JS", "WEBPACK", "BEM METHODOLOGY", "NEAT", "BOURBON"],
+        "portfolio": "http://c0depanda.com",
+        "technicalArticles": "https://medium.com/@c0depanda"
+    }
+}
