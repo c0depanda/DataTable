@@ -25,7 +25,7 @@
                     </div>
                     <!-- table data -->
                     <div class="table__data textRight" v-if="action">
-                        <a @click.prevent="loadEditModal(item)" class="link link--yellow">Edit</a>
+                        <a @click.prevent="loadEditModal(item)" class="link link--red">Edit</a>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,15 @@ const moment = require("moment");
 
 export default {
     name: "datatable",
-    props: ["tableData", "tableHeader", "sortBy", "sortDirection", "tableFields", "action", "actionFields"],
+    props: {
+        tableData: Array,
+        tableHeader: Array,
+        tableFields: Array,
+        sortDirection: String,
+        sortBy: String,
+        action: Boolean,
+        actionFields: Array
+    },
     data() {
         return {
             selectedRow: "",
@@ -546,7 +554,7 @@ export default {
     cursor: pointer;
 }
 
-.link--yellow {
-    color: yellow;
+.link--red {
+    color: red;
 }
 </style>
