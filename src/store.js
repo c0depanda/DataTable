@@ -8,9 +8,9 @@ require("firebase/firestore");
 
 // initialize your firebase app
 firebase.initializeApp({
-    apiKey: "AIzaSyCJgHkwxIhcl0sWOGaQgpQ4JKAbGH5xAvE",
-    authDomain: "britecode-b1fdf.firebaseapp.com",
-    projectId: "britecode-b1fdf"
+    apiKey: process.env.VUE_APP_APIKEY,
+    authDomain: process.env.VUE_APP_AUTHDOMAIN,
+    projectId: process.env.VUE_APP_PROJECTID
 });
 
 const db = firebase.firestore();
