@@ -58,7 +58,7 @@
                             </div>
 
                             <div class="form__footer">
-                                <button class="btn btn--primary btn--md btn--block" type="submit">Update</button>
+                                <button :disabled="disabled" class="btn btn--primary btn--md btn--block" type="submit">Update</button>
                             </div>
                         </form>
                     </div>
@@ -77,7 +77,8 @@ export default {
     data() {
         return {
             selectedRow: "",
-            selectedFields: []
+            selectedFields: [],
+            disabled: false
         };
     },
 
@@ -130,22 +131,38 @@ export default {
 
         // perform modify action on row
         modifyField() {
-            // Check if all selected fiels have been filled
+            this.disabled = true;
+            // Check if all selected fiels have been filled and notify user on view
+            // Also curruate the selected fields data
             let currentState = false;
+            let currentFieldData = {};
             this.selectedFields.forEach(item => {
-                if (item[Object.keys[0]].value !== "") {
-                    currentState = false;
-                } else {
+                if (item[Object.keys(item)[0]].value == "") {
                     currentState = true;
+                    item[Object.keys(item)[0]].empty = true;
+                } else {
+                    currentState = false;
+                    item[Object.keys(item)[0]].empty = false;
+                    currentFieldData[Object.keys(item)[0]] = item[Object.keys(item)[0]].value;
                 }
             });
+            console.log(currentFieldData);
             // Check if currentstate is true
-            if (!currentState) {
+            if (currentState == false) {
                 // Set item to store
-                this.$store.dispatch("updateStoreItems", {
-                    id: this.selectedRow.id,
-                    selectedFields: this.selectedFields
-                });
+                this.$store
+                    .dispatch("updateStoreItems", {
+                        id: this.selectedRow.id,
+                        selectedFields: currentFieldData
+                    })
+                    .then(response => {
+                        this.disabled = false;
+                    })
+                    .catch(error => {
+                        this.disabled = false;
+                    });
+            } else {
+                this.disabled = false;
             }
         },
 
@@ -161,17 +178,6 @@ export default {
                     }
                 });
             });
-        },
-
-        editdescription() {
-            this.db
-                .doc(this.selectedRow.id)
-                .update({
-                    description: this.des
-                })
-                .then(res => {
-                    location.reload();
-                });
         }
     }
 };
