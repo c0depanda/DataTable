@@ -27,3 +27,10 @@ npm run build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## How to use the datatable component
+The DataTable allows you to pass data using props, specify the header names, select the items from the data that needs to be displayed on the table, specify if you want an action field i.e things like edit, specify what items in the data you want to sort the list by, what direction you want the fields to be sorted be it ascending/descending order and lastly which fields you need edited. 
+
+```
+<DataTable :action="true" :actionFields="['description']" :tableData="payments" :tableFields="['name', 'amount', 'description', 'date']" :tableHeader="['name', 'amount', 'description', 'date']" sortBy="date" />
+```
+
+### List of props supported
