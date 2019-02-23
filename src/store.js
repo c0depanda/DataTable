@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { reject } from 'q';
-
-const firebase = require("firebase");
-// Required for side-effects
-require("firebase/firestore");
+import firebase from 'firebase/app'
+import 'firebase/firestore'
 
 // initialize your firebase app
 firebase.initializeApp({
