@@ -130,7 +130,23 @@ export default {
 
         // perform modify action on row
         modifyField() {
-            // Set item to store
+            // Check if all selected fiels have been filled
+            let currentState = false;
+            this.selectedFields.forEach(item => {
+                if (item[Object.keys[0]].value !== "") {
+                    currentState = false;
+                } else {
+                    currentState = true;
+                }
+            });
+            // Check if currentstate is true
+            if (!currentState) {
+                // Set item to store
+                this.$store.dispatch("updateStoreItems", {
+                    id: this.selectedRow.id,
+                    selectedFields: this.selectedFields
+                });
+            }
         },
 
         // Parse action fields
@@ -501,7 +517,7 @@ export default {
     color: #1d222c;
 }
 .error {
-    display:block;
+    display: block;
     color: red;
     font-size: 12px;
     padding-top: 10px;
