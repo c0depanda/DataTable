@@ -89,4 +89,16 @@ Lastly, we had to move the build for production to heroku mainly to allow us mov
 
 **Q:** In what ways would you adapt your component so that it could be used in many different scenarios where a data table is required?
 
-**A:**
+**A:** That's essentially packaging the component as a Vue plugin so devs can install through npm or yarn and import into their project and get hacking.
+
+**Q:** What is your favorite CSS property? Why?
+
+**A:** No favourite css property, every property has a purpose and based on the task at hand and the support required will determine what property should be used over the other. 
+
+**Q:** What is your favorite modern Javascript feature? Why?
+
+**A:** This would be the use of `Let` in creating variables and the reason is simple i don't have to bother my head about scoping variables. 
+
+**Q:** What is your favorite third-party Vue.js library? Why?
+
+**A:** There's also no favourite just depends on what i'm building.
