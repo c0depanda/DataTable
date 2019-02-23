@@ -69,3 +69,20 @@ This accepts the name of the column as a string
 `sortDirection`
 Allows to specify the direction in which to sort the specified `sortBy` variable by.
 By default it sorts in the descending order if you want to sort in the ascending order just pass  `sortDirection="asc"`
+
+
+## Deployment
+Created a simple node app that serve the pages and will handle the history mode.
+The Node app uses Express, Serve static and helmet for basic security checkmates. 
+
+App is hosted on Heroku so thus a Procfile file is created to run the `node server.js` after successful production development. 
+
+Previous we had to add a `postinstall` script to install the `npm run build` command after install all dependencies on Heroku when building but based on the recent changes to heroku. 
+Heroku now runs the `npm run build` by default so we had to remove the `postinstall`
+
+Lastly, we had to move the build for production to heroku mainly to allow us move our firebase configuration keys to envirnoment variables. 
+
+## Extras
+Q: How long did you spend on the test? Would you do anything differently if you had more time?
+A: About 10 hours in total spread over 2 days. There are couple more features that could be added such as a search feature, paginations etc but that would have just prolonged it. Could probably add the search feature later tonight. 
+
