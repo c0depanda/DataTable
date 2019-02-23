@@ -42,20 +42,36 @@ The DataTable allows you to pass data using props, specify the header names, sel
 
 ### List of props supported
 
-1. `tableData`
+`tableData`
 
-    This accepts an array of objects
+This accepts an array of objects
 
-2. `tableHeader`
+`tableHeader`
 
-    This accepts an array of titles. This is what gets populated in the header of the table
+This accepts an array of titles. This is what gets populated in the header of the table.
 
-3. tableFields
+`tableFields`
 
-4. action
+Accepts an array of the object key of the data that would be displayed in table fields
+```
+i.e item.name, item.description, item.amount
+```
+Where name, description and amount are the keys.
 
-5. actionFields
+`action`
+This takes a boolean value. It used when you either want to add an action row to the data table
 
-6. sortBy
+`actionFields`
+By default action fields only support an Edit which essentially allows you to edit any of the items in a row of data. All you have to do is pass an array of the fields name you want to edit.
+It also accepts an array
 
-7. sortDirection
+`sortBy`
+This allows you to sort the data being passed to the table based on the a column of data. i.e Sort the data by all the Names, or the amount or description etc
+This accepts the name of the column as a string
+
+`sortDirection`
+Allows to specify the direction in which to sort the specified `sortBy` variable by.
+By default it sorts in the descending order if you want to sort in the ascending order just pass 
+```
+sortBy="asc"
+```
